@@ -1,0 +1,348 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Delivery</title>
+    <link rel="stylesheet" href="{% static 'myapp/css/styles.css' %}" />
+    <style>
+      /* Additional styles for the navigation bar */
+
+      body,
+      h1,
+      h2,
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Global styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+
+      /* Header styles */
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 1rem 0;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .logo img {
+        height: 40px;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+      }
+
+      nav ul li {
+        margin-left: 1rem;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      /* Hero section styles */
+      .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      .hero-content {
+        flex: 1;
+        padding-right: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: aqua;
+      }
+
+      .hero-image img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Features section styles */
+      .features {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 1rem;
+      }
+
+      .feature {
+        text-align: center;
+        flex: 1;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .feature:hover {
+        transform: translateY(-5px);
+      }
+
+      .feature img {
+        max-width: 100px;
+        height: auto;
+        margin-bottom: 1rem;
+      }
+
+      .feature h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Footer styles */
+      footer {
+        text-align: center;
+        background-color: #333;
+        color: #fff;
+        padding: 1rem 0;
+      }
+
+      /* Media queries for responsiveness */
+      @media (max-width: 768px) {
+        header nav ul {
+          flex-direction: column;
+          align-items: flex-end;
+        }
+
+        header nav ul li {
+          margin-left: 0;
+          margin-bottom: 0.5rem;
+        }
+
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-content {
+          padding: 2rem 0;
+        }
+
+        .features {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .feature {
+          margin-bottom: 2rem;
+        }
+      }
+
+      header {
+        background-color: black;
+        color: white;
+        padding: 1rem 0;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 1200px;
+        padding: 0 1rem;
+      }
+
+      nav .logo img {
+        width: 100px;
+        height: auto;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      nav ul li a:hover{
+        color: aqua
+
+      }
+
+      nav ul li a i {
+        margin-left: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <img
+            src="{% static 'myapp/images/logo.png' %}"
+            alt="Food Delivery Logo"
+          />
+        </div>
+        
+        <ul>
+          <li><a href="/">Home</a></li>
+          {% comment %} <li><a href="{% url 'user-login' %}">Login</a></li> {% endcomment %}
+          <li><a href="{% url 'place-order' %}">Place an Order</a></li>
+          <li><a href="{% url 'make-payment' %}">Make Payment</a></li>
+          <li><a href="{% url 'notification-list' %}">Notification List</a></li>
+          <!-- Add more navigation items here -->
+        </ul>
+      </nav>
+    </header>
+    <section class="hero">
+      <!-- ... your hero section content ... -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Welcome to Food Delivery</h1>
+          <p>Your favorite dishes delivered to your doorstep!</p>
+          <a href="{% url 'register-user' %}" class="btn">Register user</a>
+        </div>
+        <div class="hero-image">
+          <img
+            src="{% static 'myapp/images/hero.jpg' %}"
+            alt="Food Delivery Hero Image"
+          />
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="feature">
+          <img src="{% static 'myapp/images/icon1.png' %}" alt="Feature Icon" />
+          <h2>Quick Delivery</h2>
+          <p>Enjoy fast and reliable delivery services.</p>
+        </div>
+        <div class="feature">
+          <img src="{% static 'myapp/images/icon2.png' %}" alt="Feature Icon" />
+          <h2>Wide Variety</h2>
+          <p>Choose from a wide range of delicious dishes.</p>
+        </div>
+        <div class="feature">
+          <img src="{% static 'myapp/images/icon3.png' %}" alt="Feature Icon" />
+          <h2>Easy Ordering</h2>
+          <p>Place your order hassle-free with our user-friendly platform.</p>
+        </div>
+      </section>
+    </section>
+    <section id="notification-container">
+      <div id="order-notifications">
+        {% comment %} <h3>Order Notifications</h3> {% endcomment %}
+        <ul id="order-notification-list">
+          <!-- Order notifications will be added dynamically here -->
+        </ul>
+      </div>
+      <div id="payment-notifications">
+        {% comment %} <h3>Payment Notifications</h3> {% endcomment %}
+        <ul id="payment-notification-list">
+          <!-- Payment notifications will be added dynamically here -->
+        </ul>
+      </div>
+    </section>
+    
+
+    <footer>
+      <p>&copy; 2023 Food Delivery. All rights reserved.</p>
+  </footer>
+</body>
+    <!-- ... rest of your HTML ... -->
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // Establish a WebSocket connection
+      const socket = new WebSocket(
+        "ws://" + window.location.host + "/ws/notifications/"
+      );
+
+      // Handle incoming messages
+      socket.onmessage = (event) => {
+        const data = JSON.parse(event.data); 
+        const message = data.message;
+        const orderNotificationList = document.getElementById('order-notification-list');
+        const paymentNotificationList = document.getElementById('payment-notification-list');
+      
+        if (data.notification_type === 'order') {
+          const li = document.createElement('li');
+          li.textContent = message;
+          orderNotificationList.appendChild(li);
+        } else if (data.notification_type === 'payment') {
+          const li = document.createElement('li');
+          li.textContent = message;
+          paymentNotificationList.appendChild(li);
+        }
+
+        const notificationCount = parseInt(document.getElementById('notification-count').textContent);
+        document.getElementById('notification-count').textContent = notificationCount + 1;
+
+       
+      };
+
+      // Handle WebSocket errors
+      socket.onerror = (error) => {
+        console.error("WebSocket Error:", error);
+      };
+
+      // Handle WebSocket close event
+      socket.onclose = (event) => {
+        if (event.wasClean) {
+          console.log(
+            `WebSocket closed cleanly, code=${event.code}, reason=${event.reason}`
+          );
+        } else {
+          console.error("WebSocket connection died");
+        }
+      };
+    </script>
+  
+
+  </body>
+</html>

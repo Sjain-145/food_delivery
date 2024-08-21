@@ -1,0 +1,298 @@
+{% comment %} {% load static %} {% block content %}
+
+<style>
+  /* Custom styles for the notification list */
+  body.notification-body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom, #f6b93b, #e74c3c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.5s;
+    padding: 0;
+  }
+
+  .notification-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Center the text within the container */
+  }
+  .notification-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #ff6b81;
+    text-align: center;
+  }
+
+  .notification-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .notification-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+  }
+
+  .notification-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .notification-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 2rem;
+  }
+
+  .notification-label {
+    font-weight: bold;
+    color: #ff6b81;
+    margin-bottom: 0.5rem;
+  }
+
+  .notification-value {
+    color: #27ae60;
+  }
+
+  .no-notifications {
+    font-style: italic;
+    color: #777;
+    text-align: center;
+  }
+
+  .notification-image {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .notification-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.7;
+    transform: scale(1.05);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .notification-content,
+  .notification-image {
+    width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    .notification-content,
+    .notification-image {
+      width: 100%;
+    }
+  }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notification List</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+
+  <body class="notification-body">
+    <div class="notification-content">
+      <h1 class="notification-title">Your Notifications</h1>
+      <ul class="notification-list">
+        {% for notification in notifications %}
+        <li class="notification-item">
+          <div class="notification-info">
+            <span class="notification-label">Order ID:</span>
+            <span class="notification-value"
+              >{{ notification.order_id.order_id }}</span
+            >
+          </div>
+          <div class="notification-info">
+            <span class="notification-label">Message:</span>
+            <span class="notification-value">{{ notification.message }}</span>
+          </div>
+          <div class="notification-info">
+            <span class="notification-label">Created At:</span>
+            <span class="notification-value"
+              >{{ notification.created_at }}</span
+            >
+          </div>
+          <div class="notification-info">
+            <span class="notification-label">Payment ID:</span>
+            <span class="notification-value"
+              >{{ notification.payment_id.payment_id }}</span
+            >
+          </div>
+        </li>
+        {% empty %}
+        <li class="no-notifications">No notifications available.</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="notification-image">
+      <img
+        src="{% static 'myapp/images/notification-bg.jpg' %}"
+        alt="Notification Image"
+      />
+    </div>
+  </body>
+</html>
+
+{% endblock %} {% endcomment %} {% load static %} {% block content %}
+
+<style>
+  /* Custom styles for the notification list */
+  body.notification-body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom, #f6b93b, #e74c3c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.5s;
+    padding: 0;
+  }
+
+  .notification-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Center the text within the container */
+  }
+
+  .notification-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: black;
+  }
+
+  .notification-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .notification-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+  }
+
+  .notification-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .notification-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 2rem;
+  }
+
+  .notification-label {
+    font-weight: bold;
+    color: #ff6b81;
+    margin-bottom: 0.5rem;
+  }
+
+  .notification-value {
+    color: #27ae60;
+  }
+
+  .no-notifications {
+    font-style: italic;
+    color: #777;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .notification-content {
+      padding: 2rem 1rem; /* Adjust padding for smaller screens */
+    }
+  }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notification List</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+
+  <body class="notification-body">
+    <div class="notification-content">
+      <h1 class="notification-title">Your Notifications</h1>
+      <ul class="notification-list">
+        {% for notification in notifications %}
+        <li class="notification-item">
+          <div class="notification-info">
+            <span class="notification-label">Order ID:</span>
+            <span class="notification-value"
+              >{{ notification.order_id.order_id }}</span
+            >
+          </div>
+          <div class="notification-info">
+            <span class="notification-label">Message:</span>
+            <span class="notification-value">{{ notification.message }}</span>
+          </div>
+          <div class="notification-info">
+            <span class="notification-label">Created At:</span>
+            <span class="notification-value"
+              >{{ notification.created_at }}</span
+            >
+          </div>
+          <div class="notification-info">
+            <span class="notification-label">Payment ID:</span>
+            <span class="notification-value"
+              >{{ notification.payment_id.payment_id }}</span
+            >
+          </div>
+        </li>
+        {% empty %}
+        <li class="no-notifications">No notifications available.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
+
+{% endblock %}

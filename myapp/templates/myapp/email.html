@@ -1,0 +1,125 @@
+{% comment %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Notification</title>
+  </head>
+  <body>
+    <small>Hello, {{ username }}</small>
+
+    <p>Email Notification</p>
+
+    <p>Order ID: {{ notification.order_id.order_id }}</p>
+    <p>Order Status: {{ notification.order_id.status }}</p>
+    <p>Payment Amount: ${{ notification.payment_id.payment_amount }}</p>
+    <!-- Add more fields as needed from your models -->
+
+    <em>Thank you</em><br />
+    <em
+      >Team <b><a href="https://episyche.com/">Episyche Technologies</a></b></em
+    >
+  </body>
+</html>
+{% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Notification</title>
+    <style>
+      /* Reset some default styles for email rendering */
+      body,
+      p,
+      small {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .header {
+        background-color: #007bff;
+        padding: 20px;
+        text-align: center;
+        color: #fff;
+      }
+
+      .content {
+        padding: 20px;
+      }
+
+      .content p {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .content small {
+        font-size: 12px;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 20px;
+        color: #555;
+      }
+
+      .footer a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Email Notification</h1>
+      </div>
+      <div class="content">
+        <small>Hello, {{ username }}</small>
+
+        <p>Email Notification</p>
+
+        <p><strong>Order ID:</strong> {{ notification.order_id.order_id }}</p>
+        <p><strong>Order Status:</strong> {{ notification.order_id.status }}</p>
+        <p>
+          <strong>Payment Amount:</strong> ${{
+          notification.payment_id.payment_amount }}
+        </p>
+        <!-- Add more fields as needed from your models -->
+
+        <em>Thank you</em>
+        <br />
+        <em
+          >Team
+          <b><a href="https://episyche.com/">Episyche Technologies</a></b></em
+        >
+      </div>
+      <div class="footer">
+        <p>
+          &copy; {{ year }}
+          <a href="https://episyche.com/">Episyche Technologies</a>. All rights
+          reserved.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

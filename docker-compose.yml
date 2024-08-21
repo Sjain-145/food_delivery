@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    container_name: food_container
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 9982
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+    container_name: app
+
+  redis:  # Define the redis service here
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+#runserver 0.0.0.0:8000
+  # celery: 
+  #   restart: always
+  #   build: .
+  #   command: celery -A food_delivery worker -l INFO
+  #   volumes:
+  #     - .:/app
+  #   container_name: celery
+  #   depends_on:
+  #     - db
+  #     - web
+  #     - redis
+
+

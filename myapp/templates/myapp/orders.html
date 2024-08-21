@@ -1,0 +1,55 @@
+{% comment %} {% block content %}
+<h1>Orders List</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>User</th>
+      <th>Order Date</th>
+      <th>Order Item</th>
+      <th>Restaurant Name</th>
+      <!-- Add more columns if needed -->
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in orders %}
+    <tr>
+      <td>{{ order.order_id }}</td>
+      <td>{{ order.user_id.name }}</td>
+      <td>{{ order.order_date }}</td>
+      <td>{{ order.order_item }}</td>
+      <td>{{ order.restaurant_name }}</td>
+      <!-- Add more columns if needed -->
+    </tr>
+    <tr>
+      <td colspan="5">
+        <form method="post" action="{% url 'make-payment' %}">
+          {% csrf_token %}
+          <input type="hidden" name="order_id" value="{{ order.order_id }}">
+          <label for="payment_amount">Payment Amount:</label>
+          <input type="text" name="payment_amount" required>
+          <button type="submit">Make Payment</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</body>
+</html>
+{% endblock %} {% endcomment %}
+
+<!-- orders.html -->
+
+
+
+{% block content %}
+  <h2>Orders List</h2>
+  <ul>
+    {% for order in orders %}
+      <li>{{ order.order_name }} - {{ order.order_date }}</li>
+      <!-- Display other order details as needed -->
+    {% endfor %}
+  </ul>
+{% endblock %}
+

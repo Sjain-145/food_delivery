@@ -1,0 +1,146 @@
+{% comment %} {% extends 'index.html' %} {% block content %}
+
+<div class="payment-list-container">
+  <h1 class="payment-list-title">Payment List</h1>
+  <table class="payment-table">
+    <thead>
+      <tr>
+        <th>Payment ID</th>
+        <th>User ID</th>
+        <th>Order ID</th>
+        <th>Payment Amount</th>
+        <th>Payment Status</th>
+        <th>Edit Payment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <form method="post">
+        {% csrf_token %} {% for payment in payments %}
+        <tr>
+          <td>{{ payment.payment_id }}</td>
+          <td>{{ payment.user.username }}</td>
+          <td>{{ payment.order_id }}</td>
+          <td>
+            <input
+              type="text"
+              name="payment_amount_{{ payment.payment_id }}"
+              value="{{ payment.payment_amount }}"
+              class="payment-amount-input"
+            />
+          </td>
+          <td>{{ form.payment_status }}</td>
+          <td>
+            <button
+              type="submit"
+              name="update_payment"
+              value="{{ payment.payment_id }}"
+              class="update-button"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </form>
+    </tbody>
+  </table>
+</div>
+{% endblock %} {% endcomment %} {% block content %}
+<style>
+  .payment-list-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+  }
+
+  .payment-list-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    text-align: center;
+  }
+
+  .payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .payment-table th,
+  .payment-table td {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .payment-amount-input {
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .update-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .update-button:hover {
+    background-color: #c0392b;
+  }
+</style>
+
+<div class="payment-list-container">
+  <h1 class="payment-list-title">Payment List</h1>
+  <table class="payment-table">
+    <thead>
+      <tr>
+        <th>Payment ID</th>
+        <th>User ID</th>
+        <th>Order ID</th>
+        <th>Payment Amount</th>
+        <th>Payment Status</th>
+        <th>Edit Payment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <form method="post">
+        {% csrf_token %} {% for payment in payments %}
+        <tr>
+          <td>{{ payment.payment_id }}</td>
+          <td>{{ payment.user.username }}</td>
+          <td>{{ payment.order_id }}</td>
+          <td>
+            <input
+              type="text"
+              name="payment_amount_{{ payment.payment_id }}"
+              value="{{ payment.payment_amount }}"
+              class="payment-amount-input"
+            />
+          </td>
+          <td>{{ form.payment_status }}</td>
+          <td>
+            <button
+              type="submit"
+              name="update_payment"
+              value="{{ payment.payment_id }}"
+              class="update-button"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </form>
+    </tbody>
+  </table>
+</div>
+{% endblock %}

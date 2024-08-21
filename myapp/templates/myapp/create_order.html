@@ -1,0 +1,125 @@
+{% load static %} {% block content %}
+
+<style>
+  body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom, #f6b93b, #e74c3c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.5s;
+  }
+
+  .order-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .order-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .order-content {
+    padding: 2rem;
+    width: 100%;
+    text-align: center;
+    transform: translateY(0);
+    transition: transform 0.3s;
+  }
+
+  .order-container:hover .order-content {
+    transform: translateY(-10px);
+  }
+
+  .order-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .order-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* Center the form horizontally */
+  }
+
+  .order-form label {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #555;
+  }
+
+  .order-form input[type="text"],
+  .order-form input[type="number"],
+  .order-form select {
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    outline: none;
+    width: 100%;
+  }
+
+  .order-form input:focus,
+  .order-form select:focus {
+    background-color: #f3f3f3;
+  }
+
+  .btn-order {
+    padding: 1rem 2rem;
+    background-color: orange;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    width: 100%;
+    margin-top: 1rem;
+    transform: scale(1);
+    transition: transform 0.3s;
+  }
+
+  .btn-order:hover {
+    background-color: #a29bfe;
+    transform: scale(1.05);
+  }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Place Your Order</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+
+  <body>
+    <div class="order-container">
+      <div class="order-content">
+        <h1 class="order-title">Place Your Order</h1>
+        <form method="post" class="order-form">
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit" class="btn-order">Place Order</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock %}

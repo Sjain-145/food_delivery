@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Registration</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-image: url("{% static 'bg.png' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .registration-container {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        width: 400px;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .registration-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #e74c3c;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        transition: background-color 0.3s;
+        color: #333;
+      }
+
+      .form-input:hover {
+        background-color: #f0f0f0;
+      }
+
+      .register-button {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .register-button:hover {
+        background-color: #c0392b;
+      }
+
+      .registration-image {
+        max-width: 120px;
+        margin-bottom: 20px;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .footer {
+        margin-top: 30px;
+        font-size: 12px;
+        color: #999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="registration-container">
+      <img
+        src="{% static 'myapp/images/user-icon.png' %}"
+        alt="Food Delivery"
+        class="registration-image"
+      />
+      <h1 class="registration-title">User Registration</h1>
+      <form method="post">
+        {% csrf_token %}
+        <input type="text" class="form-input" placeholder="Name" name="name" />
+        <input
+          type="email"
+          class="form-input"
+          placeholder="Email"
+          name="mail"
+        />
+        <input
+          type="password"
+          class="form-input"
+          placeholder="Password"
+          name="password"
+        />
+        <button type="submit" class="register-button">Register</button>
+      </form>
+      <p class="footer">&copy; 2023 Food Delivery. All rights reserved.</p>
+    </div>
+  </body>
+</html>
